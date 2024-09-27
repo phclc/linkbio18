@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Nhập</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="login-container">
+        <h1>Đăng Nhập</h1>
+        <form id="loginForm">
+            <label for="email">Email</label>
+            <input type="text" id="email" name="email" required>
+            
+            <label for="password">Mật khẩu</label>
+            <input type="password" id="password" name="password" required>
+            
+            <button type="submit">Đăng Nhập</button>
+        </form>
+    </div>
+    
+    <script>
+        // Khi trang web được tải, kiểm tra xem có thông tin đăng nhập đã lưu trong LocalStorage không
+        window.onload = function() {
+            const storedEmail = localStorage.getItem('email');
+            if (storedEmail) {
+                alert('Bạn đã đăng nhập với email: ' + storedEmail);
+            }
+        };
+
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            // Lấy thông tin đăng nhập từ form
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            // Lưu thông tin đăng nhập vào LocalStorage
+            localStorage.setItem('email', email);
+            localStorage.setItem('password', password);
+
+            alert('Thông tin đăng nhập đã được lưu!');
+        });
+    </script>
+</body>
+</html>
